@@ -51,7 +51,15 @@ const authenticateApiKey = (req, res, next) => {
 };
 
 // Load data
-const loadsData = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/loads.json'), 'utf8'));
+let loadsData = [];
+try {
+  loadsData = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/loads.json'), 'utf8'));
+  console.log(`Loaded ${loadsData.length} loads from data file`);
+} catch (error) {
+  console.error('Error loading loads data:', error.message);
+  // Use empty array if file not found
+  loadsData = [];
+}
 
 // Mock FMCSA API response
 const mockFMCSAResponse = (mcNumber) => {
@@ -300,23 +308,11 @@ app.use('*', (req, res) => {
 });
 
 // Start server
-if (process.env.NODE_ENV === 'production') {
-  // Production: Use HTTPS
-  const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'ssl/key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'ssl/cert.pem'))
-  };
-  
-  https.createServer(httpsOptions, app).listen(PORT, () => {
-    console.log(`HTTPS Server running on port ${PORT}`);
-  });
-} else {
-  // Development: Use HTTP
-  app.listen(PORT, () => {
-    console.log(`HTTP Server running on port ${PORT}`);
-    console.log(`Health check: http://localhost:${PORT}/health`);
-    console.log(`API Documentation: http://localhost:${PORT}/api`);
-  });
-}
+// Always use HTTP for Railway deployment
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`HTTP Server running on port ${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/health`);
+  console.log(`API Documentation: http://localhost:${PORT}/api`);
+});
 
 module.exports = app;
