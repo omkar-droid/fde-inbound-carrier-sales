@@ -1,0 +1,24 @@
+{
+  "name": "fde-inbound-carrier-sales",
+  "version": "1.0.0",
+  "description": "FDE Technical Challenge: Inbound Carrier Sales Automation",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "cd api && npm start",
+    "dev": "cd api && npm run dev",
+    "build": "cd api && npm install && cd ../dashboard && npm install && npm run build",
+    "test": "node scripts/test-api.js"
+  },
+  "keywords": [
+    "freight",
+    "carrier",
+    "sales",
+    "automation",
+    "api"
+  ],
+  "author": "FDE Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
