@@ -1,0 +1,12 @@
+{
+  "name": "fde-scripts",
+  "version": "1.0.0",
+  "description": "Utility scripts for FDE Inbound Carrier Sales",
+  "main": "test-api.js",
+  "scripts": {
+    "test": "node test-api.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
