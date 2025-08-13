@@ -1,0 +1,30 @@
+# Documentation
+docs/
+README.md
+*.md
+
+# Development files
+scripts/
+.env
+.env.local
+.env.example
+
+# Docker files (not needed for Nixpacks)
+docker/
+docker-compose.yml
+Dockerfile*
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PDF
+*.pdf

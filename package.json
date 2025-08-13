@@ -4,10 +4,11 @@
   "description": "FDE Technical Challenge: Inbound Carrier Sales Automation",
   "main": "api/server.js",
   "scripts": {
-    "start": "cd api && npm start",
+    "start": "cd api && npm install && npm start",
     "dev": "cd api && npm run dev",
     "build": "cd api && npm install && cd ../dashboard && npm install && npm run build",
-    "test": "node scripts/test-api.js"
+    "test": "node scripts/test-api.js",
+    "postinstall": "cd api && npm install"
   },
   "keywords": [
     "freight",
